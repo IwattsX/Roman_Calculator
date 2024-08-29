@@ -6,19 +6,18 @@ from evaluate_expression import evaluate
 def main():
     parser = argparse.ArgumentParser(description="Process some arguments.")
     
-    parser.add_argument('equation', nargs=argparse.REMAINDER, help='A list of arguments')
+    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to be inputed (either as a string "" or \( \) \* for escape characters all at once no quotations)')
 
     args = parser.parse_args()
 
-    # Print the parsed arguments
     roman_equation = "".join(args.equation)
-    
+    print(f"The roman numeral equation is {roman_equation}")
+
     RN_set = {'I', 'V', 'X', 'L', 'C', 'D', 'M'}
     operators = {'+', '-', '*', '/', '(', ')'}
     number_equation = ""
+
     idx = 0
-    
-    print(f"The roman numeral equation is {roman_equation}")
     while idx < len(roman_equation):
         tmp = ""
         if roman_equation[idx] in RN_set:
@@ -34,6 +33,7 @@ def main():
             idx += 1
 
     print(f"The base 10 equation being evaluated is {number_equation}")
+
 
     try: 
         num_res = evaluate(number_equation)
