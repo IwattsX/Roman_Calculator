@@ -71,12 +71,3 @@ def evaluate(expression):
         return e
 
     return values[0]
-
-# Example demonstration:
-def main():
-    expression = '((20 - 10 ) * (30 - 20) / 33 + 10 ) * 2'
-    print("Shunting Yard Algorithm Result:", evaluate(expression))
-    print("Native Python Evaluation:", eval(expression))
-
-if __name__ == '__main__':
-    main()
