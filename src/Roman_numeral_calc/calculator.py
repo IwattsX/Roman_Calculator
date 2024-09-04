@@ -21,6 +21,13 @@ def main():
     if len(args.equation) == 0:
         print("I can't read this.")
         return None
+    elif len(args.equation) == 1:
+        try:
+            num_res = romanToDecimal(str(args.equation[0]))
+            print(num_res)
+        except ValueError as e:
+            print(e)
+        return
 
 
     roman_equation = "".join(args.equation).replace(' ', "")
