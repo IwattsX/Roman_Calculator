@@ -1,7 +1,22 @@
+"""The file used to translate roman numerals to integers and vice versa."""
+
 import re
 
 
 def romanToDecimal(roman_number : str) -> int:
+    """
+    Parse a roman_number (I, V, X, L, C, D, M) into a number.
+    
+    Parameters:
+    - roman_number: A string representing the Roman numeral (I, V, X, L, C, D, M).
+
+    Returns:
+    - int: the integer representation of the roman numeral
+    
+    Raises:
+    - ValueError: the Roman numeral is invalid or is not a string type
+    """
+    # Should never happen
     if not isinstance(roman_number, str):
         raise ValueError("The roman number must be in string format...")
 
@@ -44,6 +59,18 @@ def romanToDecimal(roman_number : str) -> int:
     return res
 
 def decimalToRoman(num : int) -> str:
+    """
+    Parse a natural number to a Roman Numeral.
+
+    Parameters:
+    - num: the integer that needs to be parsed into a Roman Numeral.
+    
+    Returns:
+    - str: The roman numeral.
+
+    Raises:
+    - ValueError: If num isn't an integer type or num<=0 or num > 3999
+    """
     if not isinstance(num, int):
         raise ValueError("I don’t know how to read this.")
 
@@ -70,14 +97,14 @@ def decimalToRoman(num : int) -> str:
     return res
         
 
-if __name__ == '__main__':
-    for i in range(1, 101):
-        roman_number = decimalToRoman(i)
-        print(roman_number)
-        print(romanToDecimal(roman_number))
-        print("------")
+# if __name__ == '__main__':
+#     for i in range(1, 101):
+#         roman_number = decimalToRoman(i)
+#         print(roman_number)
+#         print(romanToDecimal(roman_number))
+#         print("------")
 
-    try: 
-        print(decimalToRoman(0))
-    except ValueError as e:
-        print(e)
+#     try: 
+#         print(decimalToRoman(0))
+#     except ValueError as e:
+#         print(e)

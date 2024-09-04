@@ -1,15 +1,33 @@
+"""A File used for evaluation a mathematical expression using the shutting yard algorithm."""
+
 import re
 from collections import deque
 
-def peek(stack : deque) -> str:
+
+def peek(stack : deque) -> (str | None) :
     """
     Peeks at the top element of a stack without popping it.
+
+    Parameters:
+    - stack: a deque of operation tokens
+
+    Returns:
+    - None: if the stack is empty
+    - str: the last element of the deque
     """
     return stack[-1] if stack else None
 
 def apply_operator(operators : deque, values : deque):
     """
-    Applies an operator to the two most recent values in the values stack.
+    Apply an operator to the two most recent values in the values stack. Appends the result to the values deque.
+
+    Parameters: 
+    - operators (deque): Stack of operations to do
+    - values (deque): contains the left and right value to the operator
+
+    Raises:
+    - IndexError: If there is not enough values to pop for either operators or values
+    - ValueError: If result is greater than 3,999 or is less than or equal to 0 as well as a floating point number
     """
     if not operators or len(values) < 2:
         print("Hello")
@@ -52,14 +70,28 @@ def apply_operator(operators : deque, values : deque):
 
 def greater_precedence(op1 : str, op2 : str) -> bool:
     """
-    Determines if the precedence of op1 is greater than op2.
+    Determine the presedence between two operations (+, -, *, / ).
+
+    Returns: 
+    - bool: true the op1 has greater precedence than op2 else false
     """
     precedences = {'+' : 0, '-' : 0, '*' : 1, '/' : 1}
     return precedences[op1] > precedences[op2]
 
 def evaluate(expression : str) -> int:
     """
-    Evaluates a mathematical expression using the Shunting Yard Algorithm.
+    Evaluate a mathematical expression using the Shunting Yard Algorithm.
+
+    Parameters: 
+    - expression (str): a mathematical expression with regular numbers and operations (+, -, *, / )
+    and supports parenthesis and brackets.
+    
+    Returns:
+    - int: The result of evaluating the mathematical expression. 
+
+    Raises:
+    - ValueError: if the expression is invalid
+    - IndexError: if either the left, right, or operator is missing since the stack will have an indexError for popping
     """
     tokens = re.findall("[+/*()-\[\]]|\d+", expression)
     print(tokens)
