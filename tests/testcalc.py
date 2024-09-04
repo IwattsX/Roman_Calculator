@@ -1,6 +1,6 @@
 import pytest
 from src.Roman_numeral_calc.utils import romanToDecimal, decimalToRoman
-
+from src.Roman_numeral_calc.evaluate_expression import evaluate
 def test_I():
     assert romanToDecimal("I") == 1
 
@@ -11,3 +11,8 @@ def test_V():
 
 def test_1():
     assert decimalToRoman(10) == 'X'
+
+
+
+def test_eval_expr1():
+    assert evaluate("((10 + 5) * 3 - 5 )/ 5") == 8
