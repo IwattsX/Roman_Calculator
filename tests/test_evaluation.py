@@ -78,6 +78,9 @@ def test_large_result():
 def test_complex_expression():
     assert evaluate("((100 + 50) * 2 - 10) / 10") == 29
 
+def test_nested_parentheses_brackets():
+    assert evaluate("[(3 + 2) * (2 + 3)] / 5") == 5
+
 def test_division_by_zero():
     with pytest.raises(ZeroDivisionError) as excinfo:
         evaluate("10 / 0")
@@ -88,6 +91,12 @@ def test_invalid_character():
         evaluate("10 + a")
     assert str(excinfo.value) == "I don’t know how to read this."
 
+def test_unmatched_opening_parenthesis():
+    with pytest.raises(IndexError) as excinfo:
+        evaluate("(10 + 5")
+    assert str(excinfo.value) == "I don’t know how to read this."
+
+
 def test_unmatched_closing_parenthesis():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 + 5)")
@@ -96,4 +105,24 @@ def test_unmatched_closing_parenthesis():
 def test_invalid_op():
     with pytest.raises(ValueError) as excinfo:
         apply_operator(deque(['^']), deque([9, 5]))
+    assert str(excinfo.value) == "I don’t know how to read this."
+
+
+def test_unmatched_closing_at_start():
+    with pytest.raises(IndexError) as excinfo:
+        evaluate(")10 + 5(")
+    assert str(excinfo.value) == "I don’t know how to read this."
+
+def test_mixed_operators_precedence():
+    assert evaluate("10 + 2 * 6") == 22
+    assert evaluate("10 * 2 + 6") == 26
+
+def test_empty_parentheses():
+    with pytest.raises(IndexError) as excinfo:
+        evaluate("10 + ()")
+    assert str(excinfo.value) == "I don’t know how to read this."
+
+def test_consecutive_operators():
+    with pytest.raises(IndexError) as excinfo:
+        evaluate("10 + * 5")
     assert str(excinfo.value) == "I don’t know how to read this."
