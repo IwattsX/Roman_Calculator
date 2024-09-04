@@ -1,0 +1,16 @@
+[project]
+name = "Roman_numeral_calc"
+version= "1.0"
+
+dependencies = ["pytest"]
+
+requires-python = ">= 3.0"
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project.scripts]
+calculator = "Roman_numeral_calc.calculator:main"
+

@@ -1,7 +1,7 @@
 import argparse
 
-from utils import romanToDecimal, decimalToRoman
-from evaluate_expression import evaluate
+from .utils import romanToDecimal, decimalToRoman
+from .evaluate_expression import evaluate
 
 def main():
     parser = argparse.ArgumentParser(description="Process some arguments.")
