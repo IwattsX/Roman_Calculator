@@ -19,27 +19,27 @@ def test_IX():
 def test_invalid_input():
     with pytest.raises(ValueError) as excinfo:  
         romanToDecimal(5)
-    assert str(excinfo.value) == "The roman number must be in string format..."
+    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_invalid_input_string():
     with pytest.raises(ValueError) as excinfo:  
         romanToDecimal("Q")
-    assert str(excinfo.value) == "The roman number must have only I, V, X, L, C, D, M."
+    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_empty_roman():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("")
-    assert str(excinfo.value) == "The roman number must have only I, V, X, L, C, D, M."
+    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_none_input():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal(None)
-    assert str(excinfo.value) == "The roman number must be in string format..."
+    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_mixed_invalid_input():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("MXA")
-    assert str(excinfo.value) == "The roman number must have only I, V, X, L, C, D, M."
+    assert str(excinfo.value) == "I don’t know how to read this."
 
 
 # Decimal to Roman tests

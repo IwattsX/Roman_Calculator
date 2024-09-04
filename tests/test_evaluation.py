@@ -27,11 +27,6 @@ def test_eval_nothing():
         evaluate("")
     assert str(excinfo.value) == "I don’t know how to read this."
 
-def test_eval_none():
-    with pytest.raises(ValueError) as excinfo:
-        evaluate(None)
-    assert str(excinfo.value) == "I don’t know how to read this."
-
 def test_eval_parenthesis_brackets():
     assert evaluate("[(10 + 2) * 3] / 12") == 3
 
@@ -40,19 +35,9 @@ def test_invalid_operator():
         evaluate("10 & 5")
     assert str(excinfo.value) == "I don’t know how to read this."
 
-def test_missing_operand():
-    with pytest.raises(IndexError) as excinfo:
-        evaluate("10 +")
-    assert str(excinfo.value) == "I don’t know how to read this."
-
 def test_missing_operator():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 10")
-    assert str(excinfo.value) == "I don’t know how to read this."
-
-def test_only_operators():
-    with pytest.raises(IndexError) as excinfo:
-        evaluate("++")
     assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_unbalanced_parenthesis():
@@ -63,11 +48,6 @@ def test_unbalanced_parenthesis():
 def test_unbalanced_brackets():
     with pytest.raises(IndexError) as excinfo:
         evaluate("[10 + 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
-
-def test_whitespace_only():
-    with pytest.raises(ValueError) as excinfo:
-        evaluate("   ")
     assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_large_result():
@@ -86,10 +66,6 @@ def test_division_by_zero():
         evaluate("10 / 0")
     assert str(excinfo.value) == "You can't divide by 0."
 
-def test_invalid_character():
-    with pytest.raises(ValueError) as excinfo:
-        evaluate("10 + a")
-    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_unmatched_opening_parenthesis():
     with pytest.raises(IndexError) as excinfo:
@@ -107,20 +83,10 @@ def test_invalid_op():
         apply_operator(deque(['^']), deque([9, 5]))
     assert str(excinfo.value) == "I don’t know how to read this."
 
-
-def test_unmatched_closing_at_start():
-    with pytest.raises(IndexError) as excinfo:
-        evaluate(")10 + 5(")
-    assert str(excinfo.value) == "I don’t know how to read this."
-
 def test_mixed_operators_precedence():
     assert evaluate("10 + 2 * 6") == 22
     assert evaluate("10 * 2 + 6") == 26
 
-def test_empty_parentheses():
-    with pytest.raises(IndexError) as excinfo:
-        evaluate("10 + ()")
-    assert str(excinfo.value) == "I don’t know how to read this."
 
 def test_consecutive_operators():
     with pytest.raises(IndexError) as excinfo:

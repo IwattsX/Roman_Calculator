@@ -18,12 +18,12 @@ def romanToDecimal(roman_number : str) -> int:
     """
     # Should never happen
     if not isinstance(roman_number, str):
-        raise ValueError("The roman number must be in string format...")
+        raise ValueError("I don’t know how to read this.")
 
     regexp_valid = r'^[IVXLCDM]+$'
 
     if not re.search(regexp_valid, roman_number):
-        raise ValueError("The roman number must have only I, V, X, L, C, D, M.")
+        raise ValueError("I don’t know how to read this.")
 
 
     res = 0
