@@ -4,7 +4,7 @@ import argparse
 from .utils import romanToDecimal, decimalToRoman
 from .evaluate_expression import evaluate
 
-def main() -> (str | None):
+def main():
     """
     Driver code (main function) for the calculator.
     
@@ -24,7 +24,7 @@ def main() -> (str | None):
 
 
     roman_equation = "".join(args.equation).replace(' ', "")
-    print(f"The roman numeral equation is {roman_equation}")
+    # print(f"The roman numeral equation is {roman_equation}")
 
     RN_set = {'I', 'V', 'X', 'L', 'C', 'D', 'M'}
     operators = {'+', '-', '*', '/', '(', ')', '[', ']'}
@@ -49,9 +49,7 @@ def main() -> (str | None):
 
         num_res = evaluate(number_equation)
         roman_res = decimalToRoman(num_res)
-        
-        print(number_equation)
-        return roman_res
+        print(roman_res)
  
     except (ValueError, IndexError) as e:
         print(e)

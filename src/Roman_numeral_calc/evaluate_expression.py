@@ -128,7 +128,7 @@ def evaluate(expression : str) -> int:
             operators.append(token)
     
     while operators:
-        if peek(operators) in "([)]":
+        if peek(operators) in "()[]":
             raise IndexError("I don’t know how to read this.")
         apply_operator(operators, values)
     
