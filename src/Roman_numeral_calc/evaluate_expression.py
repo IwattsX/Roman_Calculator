@@ -122,7 +122,7 @@ def evaluate(expression : str) -> int:
         
         else:  # Operators +, -, *, /
             while (peek(operators) and
-                   peek(operators) not in "([)]" and
+                   peek(operators) not in "()[]" and
                    greater_precedence(peek(operators), token)):
                 apply_operator(operators, values)
             operators.append(token)
