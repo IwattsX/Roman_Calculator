@@ -1,15 +1,17 @@
-[project]
-name = "Roman_numeral_calc"
-version= "1.0"
+[build-system]
+requires = ["setuptools >= 61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
+[project]
+name = "roman_numeral_calc"
+version = "1.0"
+description = "A calculator for Roman numerals"
+authors = [
+    { name = "Isaac Watts", email = "Isaac.s.watts@gmail.com" } 
+]
 dependencies = ["pytest"]
 
 requires-python = ">= 3.0"
-
-[build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
-
 
 [project.scripts]
 calculator = "Roman_numeral_calc.calculator:main"
