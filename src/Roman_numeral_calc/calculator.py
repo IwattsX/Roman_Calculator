@@ -14,7 +14,7 @@ def main():
     print(f"The roman numeral equation is {roman_equation}")
 
     RN_set = {'I', 'V', 'X', 'L', 'C', 'D', 'M'}
-    operators = {'+', '-', '*', '/', '(', ')'}
+    operators = {'+', '-', '*', '/', '(', ')', '[', ']'}
     number_equation = ""
 
     idx = 0

@@ -1,6 +1,6 @@
 import pytest
-from src.Roman_numeral_calc.utils import romanToDecimal, decimalToRoman
-from src.Roman_numeral_calc.evaluate_expression import evaluate
+from Roman_numeral_calc.utils import romanToDecimal, decimalToRoman
+from Roman_numeral_calc.evaluate_expression import evaluate
 
 
 def test_I():
