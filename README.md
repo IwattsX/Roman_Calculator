@@ -6,7 +6,6 @@ A roman numeral that reads in roman numerals from I (1) - MMMCMXCIX (3,999) and 
 1) Execute the script in cmd line
 ```python main.py X```
 
-
 # How to Run via using the pyproject.toml file
 1) Create a virtual Env:
 ```
@@ -41,10 +40,50 @@ pip install .
 ```
 ./venv/bin/calculator V + I
 ```
-Windows:
+- Windows:
 ```
 ./venv/Scripts/calculator V + I
 ```
 
 **NOTE:** Some characters you have to escape in linux like * and ()
+
+# Run test using pytest with pytest-cov
+- Integration test using monkeypatch
+```
+pytest --cov=Roman_numeral_calc.calculator --cov-report=term-missing tests/test_calculator.py
+```
+
+- For only utils.py functions romanToDecimal() and decimalToRoman()
+```
+pytest --cov=Roman_numeral_calc.utils --cov-report=term-missing tests/test_utils.py
+```
+
+- For only evaluate_expression.py test
+```
+pytest --cov=Roman_numeral_calc.evaluate_expression --cov-report=term-missing tests/test_evaluation.py
+```
+
+- For both utils.py and evaluate_expression.py
+```
+pytest --cov=Roman_numeral_calc.evaluate_expression --cov=Roman_numeral_calc.utils  --cov-report=term-missing tests/run_unit_test.py
+```
+# Run test w/o pytest-cov
+- Integration test using monkeypatch
+```
+pytest tests/test_calculator.py
+```
+
+- For only utils.py functions romanToDecimal() and decimalToRoman()
+```
+pytest tests/test_utils.py
+```
+- For only evaluate_expression.py test
+```
+pytest tests/test_evaluation.py
+```
+
+- For both utils.py and evaluate_expression.py
+```
+pytest tests/run_unit_test.py
+```
 
