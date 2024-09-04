@@ -55,7 +55,9 @@ def romanToDecimal(roman_number : str) -> int:
             res += tmp1
         i += 1
             
-
+    if res > 3999:
+        raise ValueError("You’re going to need a bigger calculator.")
+    
     return res
 
 def decimalToRoman(num : int) -> str:

@@ -41,6 +41,12 @@ def test_mixed_invalid_input():
         romanToDecimal("MXA")
     assert str(excinfo.value) == "I don’t know how to read this."
 
+def test_bigger_calc():
+    with pytest.raises(ValueError) as excinfo:
+        romanToDecimal("MMMM")
+    assert str(excinfo.value) == "You’re going to need a bigger calculator."
+
+
 
 # Decimal to Roman tests
 def test_10():
