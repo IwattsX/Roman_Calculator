@@ -1,4 +1,8 @@
-"""The driver code for the Roman Numeral calculator. Run -h or --help as a cmd line argument for more details"""
+"""
+The driver code for the Roman Numeral calculator.
+
+Run -h or --help as a cmd line argument for more details.
+"""
 import argparse
 
 from .utils import romanToDecimal, decimalToRoman
