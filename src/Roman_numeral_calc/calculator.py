@@ -1,4 +1,4 @@
-"""The driver code for the Roman Numeral calculator."""
+"""The driver code for the Roman Numeral calculator. Run -h or --help as a cmd line argument for more details"""
 import argparse
 
 from .utils import romanToDecimal, decimalToRoman
@@ -12,11 +12,16 @@ def main() -> (str | None):
     - str: If successful run with parsing a Roman Numeral equation to a single Roman_numeral.
     - None: If unsuccessful.
     """
-    parser = argparse.ArgumentParser(description="Process some arguments.")
+    parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / ). using PEMDAS")
     
-    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to be inputed (either as a string "" or ( ) * (use escape characters for these))')
+    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to be inputed either as a string or a set of cmd line arguments')
 
     args = parser.parse_args()
+
+    if len(args.equation) == 0:
+        print("I can't read this.")
+        return None
+
 
     roman_equation = "".join(args.equation).replace(' ', "")
     print(f"The roman numeral equation is {roman_equation}")
@@ -41,11 +46,11 @@ def main() -> (str | None):
                 idx += 1
             else:
                 raise ValueError("I can't read this.")
-        
+
         num_res = evaluate(number_equation)
         roman_res = decimalToRoman(num_res)
-
-        print(roman_res)
+        
+        print(number_equation)
         return roman_res
  
     except (ValueError, IndexError) as e:

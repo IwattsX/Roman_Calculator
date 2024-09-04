@@ -9,7 +9,7 @@ description = "A calculator for Roman numerals"
 authors = [
     { name = "Isaac Watts", email = "Isaac.s.watts@gmail.com" } 
 ]
-dependencies = []
+dependencies = ["pytest==8.3.2"]
 readme = "README.md"
 requires-python = ">= 3.0"
 

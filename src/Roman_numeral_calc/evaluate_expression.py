@@ -30,7 +30,6 @@ def apply_operator(operators : deque, values : deque):
     - ValueError: If result is greater than 3,999 or is less than or equal to 0 as well as a floating point number
     """
     if not operators or len(values) < 2:
-        print("Hello")
         raise IndexError("I don’t know how to read this.")
         
     operator = operators.pop()
@@ -58,7 +57,10 @@ def apply_operator(operators : deque, values : deque):
     
     # Only if left is divisible by the right will this work
     elif operator == '/':
-        if left % right == 0:
+        # Never should get here
+        if right == 0:
+            raise ZeroDivisionError("You can't divide by 0.")
+        elif left % right == 0:
             res = left // right
         else:
             raise ValueError("There is no concept of a fractional number in Roman numerals.")
@@ -93,32 +95,44 @@ def evaluate(expression : str) -> int:
     - ValueError: if the expression is invalid
     - IndexError: if either the left, right, or operator is missing since the stack will have an indexError for popping
     """
-    tokens = re.findall("[+/*()-\[\]]|\d+", expression)
-    print(tokens)
+    if not isinstance(expression, str) or expression.strip() == "":
+        raise ValueError("I don’t know how to read this.")
+    
+    # Ensure expression is valid by checking for invalid characters
+    valid_tokens = re.findall(r'\d+|[+*/()-\[\]]', expression)
+    if "".join(valid_tokens) != expression.replace(" ", ""):
+        raise ValueError("I don’t know how to read this.")
+
+    tokens = valid_tokens
     values, operators = deque(), deque()
 
     for token in tokens:
         if token.isdigit():
             values.append(int(token))
-        elif token == '(':
+        
+        elif token in "([":  # Opening brackets/parentheses
             operators.append(token)
-        elif token == '[':
-            operators.append(token)
-        elif token == ')':
-            while peek(operators) and peek(operators) != '(':
+        
+        elif token in ")]":  # Closing brackets/parentheses
+            while peek(operators) and peek(operators) not in "([":  # Apply until matching opening bracket/parenthesis
                 apply_operator(operators, values)
-            operators.pop() # Discard the '('
-        elif token == ']':
-            while peek(operators) and peek(operators) != '[':
-                apply_operator(operators, values)
-            operators.pop() # Discard the '['
-        else:
-            while peek(operators) and peek(operators) not in "()[]" and greater_precedence(peek(operators), token):
+            if not operators:
+                raise IndexError("I don’t know how to read this.")
+            operators.pop()  # Discard the matching opening bracket/parenthesis
+        
+        else:  # Operators +, -, *, /
+            while (peek(operators) and
+                   peek(operators) not in "([)]" and
+                   greater_precedence(peek(operators), token)):
                 apply_operator(operators, values)
             operators.append(token)
     
-    while peek(operators):
+    while operators:
+        if peek(operators) in "([)]":
+            raise IndexError("I don’t know how to read this.")
         apply_operator(operators, values)
     
-
+    if len(values) != 1:
+        raise IndexError("I don’t know how to read this.")
+    
     return values[0]
