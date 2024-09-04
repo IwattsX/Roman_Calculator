@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools >= 61.0", "wheel"]
+requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,10 +9,13 @@ description = "A calculator for Roman numerals"
 authors = [
     { name = "Isaac Watts", email = "Isaac.s.watts@gmail.com" } 
 ]
-dependencies = ["pytest"]
-
+dependencies = []
+readme = "README.md"
 requires-python = ">= 3.0"
 
 [project.scripts]
 calculator = "Roman_numeral_calc.calculator:main"
 
+[project.urls]
+Repository = "https://github.com/IwattsX/Roman_Calculator"
+"Bug Tracker" = "https://github.com/IwattsX/Roman_Calculator/issues"
