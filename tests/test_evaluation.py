@@ -15,7 +15,7 @@ def test_bad_inputZero():
 def test_negative():
     with pytest.raises(ValueError) as excinfo:
         evaluate("4-5")
-    assert str(excinfo.value) == "Negative numbers can’t be represented in Roman numerals."
+    assert str(excinfo.value) == "Negative numbers can't be represented in Roman numerals."
 
 def test_eval_float():
     with pytest.raises(ValueError) as excinfo:
@@ -25,7 +25,7 @@ def test_eval_float():
 def test_eval_nothing():
     with pytest.raises(ValueError) as excinfo:
         evaluate("")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_eval_parenthesis_brackets():
     assert evaluate("[(10 + 2) * 3] / 12") == 3
@@ -33,27 +33,27 @@ def test_eval_parenthesis_brackets():
 def test_invalid_operator():
     with pytest.raises(ValueError) as excinfo:
         evaluate("10 & 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_missing_operator():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 10")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_unbalanced_parenthesis():
     with pytest.raises(IndexError) as excinfo:
         evaluate("(10 + 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_unbalanced_brackets():
     with pytest.raises(IndexError) as excinfo:
         evaluate("[10 + 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_large_result():
     with pytest.raises(ValueError) as excinfo:
         evaluate("2000 + 2000")
-    assert str(excinfo.value) == "You’re going to need a bigger calculator."
+    assert str(excinfo.value) == "You're going to need a bigger calculator."
 
 def test_complex_expression():
     assert evaluate("((100 + 50) * 2 - 10) / 10") == 29
@@ -70,18 +70,18 @@ def test_division_by_zero():
 def test_unmatched_opening_parenthesis():
     with pytest.raises(IndexError) as excinfo:
         evaluate("(10 + 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 
 def test_unmatched_closing_parenthesis():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 + 5)")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_invalid_op():
     with pytest.raises(ValueError) as excinfo:
         apply_operator(deque(['^']), deque([9, 5]))
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_mixed_operators_precedence():
     assert evaluate("10 + 2 * 6") == 22
@@ -91,4 +91,4 @@ def test_mixed_operators_precedence():
 def test_consecutive_operators():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 + * 5")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."

@@ -30,7 +30,7 @@ def apply_operator(operators : deque, values : deque):
     - ValueError: If result is greater than 3,999 or is less than or equal to 0 as well as a floating point number
     """
     if not operators or len(values) < 2:
-        raise IndexError("I don’t know how to read this.")
+        raise IndexError("I don't know how to read this.")
         
     operator = operators.pop()
     right = values.pop()
@@ -41,7 +41,7 @@ def apply_operator(operators : deque, values : deque):
     if operator == '+':
         res = left + right
         if res > 3999:
-            raise ValueError("You’re going to need a bigger calculator.")
+            raise ValueError("You're going to need a bigger calculator.")
     
     # Natural number closure does not hold here if left <= right (only time it can be 0 or negative)
     elif operator == '-':
@@ -49,7 +49,7 @@ def apply_operator(operators : deque, values : deque):
         if res == 0:
             raise ValueError("0 does not exist in Roman numerals.")
         elif res < 0:
-            raise ValueError("Negative numbers can’t be represented in Roman numerals.")
+            raise ValueError("Negative numbers can't be represented in Roman numerals.")
     
     # Multiplying two natural nums will always result in a natural number
     elif operator == '*':
@@ -65,7 +65,7 @@ def apply_operator(operators : deque, values : deque):
         else:
             raise ValueError("There is no concept of a fractional number in Roman numerals.")
     else:
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
 
 
     values.append(res)
@@ -96,12 +96,12 @@ def evaluate(expression : str) -> int:
     - IndexError: if either the left, right, or operator is missing since the stack will have an indexError for popping
     """
     if not isinstance(expression, str) or expression.strip() == "":
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
     
     # Ensure expression is valid by checking for invalid characters
     valid_tokens = re.findall(r'\d+|[+*/()-\[\]]', expression)
     if "".join(valid_tokens) != expression.replace(" ", ""):
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
 
     tokens = valid_tokens
     values, operators = deque(), deque()
@@ -117,7 +117,7 @@ def evaluate(expression : str) -> int:
             while peek(operators) and peek(operators) not in "([":  # Apply until matching opening bracket/parenthesis
                 apply_operator(operators, values)
             if not operators:
-                raise IndexError("I don’t know how to read this.")
+                raise IndexError("I don't know how to read this.")
             operators.pop()  # Discard the matching opening bracket/parenthesis
         
         else:  # Operators +, -, *, /
@@ -129,10 +129,10 @@ def evaluate(expression : str) -> int:
     
     while operators:
         if peek(operators) in "()[]":
-            raise IndexError("I don’t know how to read this.")
+            raise IndexError("I don't know how to read this.")
         apply_operator(operators, values)
     
     if len(values) != 1:
-        raise IndexError("I don’t know how to read this.")
+        raise IndexError("I don't know how to read this.")
     
     return values[0]

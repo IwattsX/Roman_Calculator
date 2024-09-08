@@ -18,12 +18,12 @@ def romanToDecimal(roman_number : str) -> int:
     """
     # Should never happen
     if not isinstance(roman_number, str):
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
 
     regexp_valid = r'^[IVXLCDM]+$'
 
     if not re.search(regexp_valid, roman_number):
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
 
 
     res = 0
@@ -56,7 +56,7 @@ def romanToDecimal(roman_number : str) -> int:
         i += 1
             
     if res > 3999:
-        raise ValueError("You’re going to need a bigger calculator.")
+        raise ValueError("You're going to need a bigger calculator.")
     
     return res
 
@@ -74,15 +74,15 @@ def decimalToRoman(num : int) -> str:
     - ValueError: If num isn't an integer type or num<=0 or num > 3999
     """
     if not isinstance(num, int):
-        raise ValueError("I don’t know how to read this.")
+        raise ValueError("I don't know how to read this.")
 
     if num == 0:
         raise ValueError("0 does not exist in Roman numerals.")
     elif num < 0:
-        raise ValueError("Negative numbers can’t be represented in Roman numerals.")
+        raise ValueError("Negative numbers can't be represented in Roman numerals.")
     
     if num > 3999:
-        raise ValueError("You’re going to need a bigger calculator.")
+        raise ValueError("You're going to need a bigger calculator.")
     
     nums = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
     s = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]

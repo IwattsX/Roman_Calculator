@@ -27,7 +27,7 @@ def test_single_invalid_RN(monkeypatch, capsys):
     captured = capsys.readouterr()
 
     # Check the output
-    assert captured.out.strip() == 'I don’t know how to read this.'
+    assert captured.out.strip() == 'I don\'t know how to read this.'
 
 def test_valid_expression(monkeypatch, capsys):
     monkeypatch.setattr('sys.argv', ['calculator', 'X', '+', 'V'])
@@ -44,7 +44,7 @@ def test_invalid_input(monkeypatch, capsys):
     main()
     captured = capsys.readouterr()
 
-    assert captured.out.strip() == "I don’t know how to read this."
+    assert captured.out.strip() == "I don\'t know how to read this."
 
 def test_complex_expression(monkeypatch, capsys):
     monkeypatch.setattr('sys.argv', ['calculator', 'X', '+', 'X', '*', 'II'])
@@ -60,7 +60,7 @@ def test_no_args(monkeypatch, capsys):
     main()
 
     captured = capsys.readouterr()
-    assert captured.out.strip() == "I don’t know how to read this."
+    assert captured.out.strip() == "I don\'t know how to read this."
 
 def test_invalid_operation(monkeypatch, capsys):
     monkeypatch.setattr('sys.argv', ['calculator', "2", "+", "2"])
@@ -68,4 +68,4 @@ def test_invalid_operation(monkeypatch, capsys):
     main()
 
     captured = capsys.readouterr()
-    assert captured.out.strip() == "I don’t know how to read this."
+    assert captured.out.strip() == "I don\'t know how to read this."

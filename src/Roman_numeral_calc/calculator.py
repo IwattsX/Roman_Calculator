@@ -23,7 +23,7 @@ def main():
     args = parser.parse_args()
 
     if len(args.equation) == 0:
-        print("I don’t know how to read this.") # User inputted nothing
+        print("I don't know how to read this.") # User inputted nothing
         return None
     elif len(args.equation) == 1: # Handles if the user only inputted one thing
         try:
@@ -51,7 +51,7 @@ def main():
             tmp = ""
             if roman_equation[idx] in RN_set:
                 if prev_num:
-                    raise ValueError("I don’t know how to read this.") # handles if there is just a space and no operation
+                    raise ValueError("I don't know how to read this.") # handles if there is just a space and no operation
                 while idx < len(roman_equation) and roman_equation[idx] in RN_set:
                     tmp += roman_equation[idx]
                     idx += 1
@@ -67,7 +67,7 @@ def main():
                 idx += 1
 
             else:
-                raise ValueError("I don’t know how to read this.")
+                raise ValueError("I don't know how to read this.")
 
         num_res = evaluate(number_equation)
         roman_res = decimalToRoman(num_res)

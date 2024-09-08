@@ -19,32 +19,32 @@ def test_IX():
 def test_invalid_input():
     with pytest.raises(ValueError) as excinfo:  
         romanToDecimal(5)
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_invalid_input_string():
     with pytest.raises(ValueError) as excinfo:  
         romanToDecimal("Q")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_empty_roman():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_none_input():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal(None)
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_mixed_invalid_input():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("MXA")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_bigger_calc():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("MMMM")
-    assert str(excinfo.value) == "You’re going to need a bigger calculator."
+    assert str(excinfo.value) == "You're going to need a bigger calculator."
 
 
 
@@ -66,19 +66,19 @@ def test_bad_inputzero():
 def test_float():
     with pytest.raises(ValueError) as excinfo:
         decimalToRoman(4.4)
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
 
 def test_negative_number():
     with pytest.raises(ValueError) as excinfo:
         decimalToRoman(-1)
-    assert str(excinfo.value) == "Negative numbers can’t be represented in Roman numerals."
+    assert str(excinfo.value) == "Negative numbers can't be represented in Roman numerals."
 
 def test_above_3999():
     with pytest.raises(ValueError) as excinfo:
         decimalToRoman(4000)
-    assert str(excinfo.value) == "You’re going to need a bigger calculator."
+    assert str(excinfo.value) == "You're going to need a bigger calculator."
 
 def test_non_integer_input():
     with pytest.raises(ValueError) as excinfo:
         decimalToRoman("1000")
-    assert str(excinfo.value) == "I don’t know how to read this."
+    assert str(excinfo.value) == "I don't know how to read this."
