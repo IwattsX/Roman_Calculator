@@ -92,3 +92,9 @@ def test_consecutive_operators():
     with pytest.raises(IndexError) as excinfo:
         evaluate("10 + * 5")
     assert str(excinfo.value) == "I don't know how to read this."
+
+
+def test_mult_above_3999():
+    with pytest.raises(ValueError) as excinfo:
+        evaluate("1000 * 4")
+    assert str(excinfo.value) == "You're going to need a bigger calculator."

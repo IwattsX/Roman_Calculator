@@ -54,6 +54,9 @@ def apply_operator(operators : deque, values : deque):
     # Multiplying two natural nums will always result in a natural number
     elif operator == '*':
         res = left * right
+        if res > 3999:
+            raise ValueError("You're going to need a bigger calculator.")
+
     
     # Only if left is divisible by the right will this work
     elif operator == '/':
