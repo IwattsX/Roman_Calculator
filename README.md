@@ -50,22 +50,22 @@ pip install .
 # Run test using pytest with pytest-cov
 - Integration test using monkeypatch
 ```
-pytest --cov=Roman_numeral_calc.calculator --cov-report=term-missing tests/test_calculator.py
+pytest --cov=src.Roman_numeral_calc.calculator --cov-report=term-missing tests/test_calculator.py
 ```
 
 - For only utils.py functions romanToDecimal() and decimalToRoman()
 ```
-pytest --cov=Roman_numeral_calc.utils --cov-report=term-missing tests/test_utils.py
+pytest --cov=src.Roman_numeral_calc.utils --cov-report=term-missing tests/test_utils.py
 ```
 
 - For only evaluate_expression.py test
 ```
-pytest --cov=Roman_numeral_calc.evaluate_expression --cov-report=term-missing tests/test_evaluation.py
+pytest --cov=src.Roman_numeral_calc.evaluate_expression --cov-report=term-missing tests/test_evaluation.py
 ```
 
 - For both utils.py and evaluate_expression.py
 ```
-pytest --cov=Roman_numeral_calc.evaluate_expression --cov=Roman_numeral_calc.utils  --cov-report=term-missing tests/run_unit_test.py
+pytest --cov=src.Roman_numeral_calc.evaluate_expression --cov=src.Roman_numeral_calc.utils  --cov-report=term-missing tests/run_unit_test.py
 ```
 # Run test w/o pytest-cov
 - Integration test using monkeypatch

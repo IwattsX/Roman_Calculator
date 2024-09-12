@@ -25,7 +25,7 @@ def main():
     if len(args.equation) == 0:
         print("I don't know how to read this.") # User inputted nothing
         return None
-    elif len(args.equation) == 1 and not isinstance(args.equation[0], str): # Handles if the user only inputted one thing
+    elif len(args.equation) == 1: # Handles if the user only inputted one thing
         try:
             num_res = romanToDecimal(str(args.equation[0]))
             print(num_res)
