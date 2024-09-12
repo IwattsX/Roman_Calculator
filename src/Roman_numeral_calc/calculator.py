@@ -18,14 +18,14 @@ def main():
     """
     parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / ). using PEMDAS")
     
-    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to be inputed either as a string or a set of cmd line arguments')
+    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to a set of cmd line arguments')
 
     args = parser.parse_args()
 
     if len(args.equation) == 0:
         print("I don't know how to read this.") # User inputted nothing
         return None
-    elif len(args.equation) == 1: # Handles if the user only inputted one thing
+    elif len(args.equation) == 1 and not isinstance(args.equation[0], str): # Handles if the user only inputted one thing
         try:
             num_res = romanToDecimal(str(args.equation[0]))
             print(num_res)
