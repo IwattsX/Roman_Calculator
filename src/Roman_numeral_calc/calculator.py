@@ -22,23 +22,20 @@ def main():
 
     args = parser.parse_args()
 
+    RN_set = {'I', 'V', 'X', 'L', 'C', 'D', 'M'}
+
     if len(args.equation) == 0:
         print("I don't know how to read this.") # User inputted nothing
         return None
-    elif len(args.equation) == 1: # Handles if the user only inputted one thing
-        try:
-            num_res = romanToDecimal(str(args.equation[0]))
-            print(num_res)
-        except ValueError as e:
-            print(e)
+    elif len(args.equation) == 1 and all(c in RN_set for c in args.equation[0]): # Handles if the user only inputted one thing
+        num_res = romanToDecimal(str(args.equation[0]))
+        print(num_res)
         return
 
 
     roman_equation = " ".join(args.equation) #Add spaces between the equation for edge cases
 
     # print(f"The roman numeral equation is {roman_equation}")
-
-    RN_set = {'I', 'V', 'X', 'L', 'C', 'D', 'M'}
     operators = {'+', '-', '*', '/', '(', ')', '[', ']'}
     number_equation = ""
 
