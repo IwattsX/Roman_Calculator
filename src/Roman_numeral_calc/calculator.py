@@ -8,13 +8,14 @@ import argparse
 from .utils import romanToDecimal, decimalToRoman
 from .evaluate_expression import evaluate
 
-def main() -> str:
+def main() -> (str | int):
     """
     Driver code (main function) for the calculator.
     
     Returns:
     - str: If successful run with parsing a Roman Numeral equation to a single Roman_numeral. 
         The alternative is the error in string form from ValueError or IndexError.
+    - int: If only put in one argument
     """
     parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / ). using PEMDAS")
     
