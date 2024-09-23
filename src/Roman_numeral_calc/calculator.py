@@ -30,7 +30,7 @@ def main():
     elif len(args.equation) == 1 and all(c in RN_set for c in args.equation[0]): # Handles if the user only inputted one thing
         num_res = romanToDecimal(str(args.equation[0]))
         print(num_res)
-        return
+        return num_res
 
 
     roman_equation = " ".join(args.equation) #Add spaces between the equation for edge cases
@@ -69,6 +69,7 @@ def main():
         num_res = evaluate(number_equation)
         roman_res = decimalToRoman(num_res)
         print(roman_res)
+        return roman_res
  
     except (ValueError, IndexError) as e:
         print(e)
