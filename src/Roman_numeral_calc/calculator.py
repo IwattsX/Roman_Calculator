@@ -8,13 +8,13 @@ import argparse
 from .utils import romanToDecimal, decimalToRoman
 from .evaluate_expression import evaluate
 
-def main():
+def main() -> str:
     """
     Driver code (main function) for the calculator.
     
     Returns:
-    - str: If successful run with parsing a Roman Numeral equation to a single Roman_numeral.
-    - None: If unsuccessful.
+    - str: If successful run with parsing a Roman Numeral equation to a single Roman_numeral. 
+        The alternative is the error in string form from ValueError or IndexError.
     """
     parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / ). using PEMDAS")
     
@@ -26,8 +26,11 @@ def main():
 
     if len(args.equation) == 0:
         print("I don't know how to read this.") # User inputted nothing
-        return None
-    elif len(args.equation) == 1 and all(c in RN_set for c in args.equation[0]): # Handles if the user only inputted one thing
+        return "I don't know how to read this."
+    elif len(args.equation) == 1 and all(c in RN_set for c in args.equation[0]):
+        # •	Entry of a number into your application without any operations or other numbers 
+        # should simply print the number as their English numeral representation, 
+        # i.e. VI should print 6.
         num_res = romanToDecimal(str(args.equation[0]))
         print(num_res)
         return num_res
@@ -73,7 +76,7 @@ def main():
  
     except (ValueError, IndexError) as e:
         print(e)
-        return None
+        return str(e)
 
 
 if __name__ == "__main__":
