@@ -8,6 +8,9 @@ A roman numeral that reads in roman numerals from I (1) - MMMCMXCIX (3,999) and 
 
 **NOTE** Make sure to ```pip install .``` first before you do this just like the virtual environment
 
+- Example Output below:
+![Image of running the code](./Example_output.png)
+
 # How to Run via using the pyproject.toml file
 1) Create a virtual Env:
 ```
