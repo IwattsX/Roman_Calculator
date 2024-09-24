@@ -6,6 +6,8 @@ A roman numeral that reads in roman numerals from I (1) - MMMCMXCIX (3,999) and 
 1) Execute the script in cmd line
 ```python main.py X```
 
+**NOTE** Make sure to ```pip install .``` first before you do this just like the virtual environment
+
 # How to Run via using the pyproject.toml file
 1) Create a virtual Env:
 ```
