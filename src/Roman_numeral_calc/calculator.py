@@ -17,9 +17,9 @@ def main() -> (str | int):
         The alternative is the error in string form from ValueError or IndexError.
     - int: If only put in one argument
     """
-    parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / ). using PEMDAS")
+    parser = argparse.ArgumentParser(description="Processes a Roman Numeral equation with (+, -, *, / (), [] ). using PEMDAS")
     
-    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that needs to a set of cmd line arguments')
+    parser.add_argument('equation', nargs=argparse.REMAINDER, help='The equation that is of cmd line arguments, either inputted as a string "" or as a line of Roman Numerals and operations')
 
     args = parser.parse_args()
 
