@@ -76,3 +76,23 @@ def test_invalid_operation(monkeypatch, capsys):
     captured = capsys.readouterr()
     assert captured.out.strip() == "I don\'t know how to read this."
     assert val == "I don\'t know how to read this."
+
+
+
+def test_invalid_IC(monkeypatch, capsys):
+    monkeypatch.setattr('sys.argv', ['calculator', "IC"])
+
+    val = main()
+
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "I don\'t know how to read this."
+    assert val == "I don\'t know how to read this."
+
+def test_valid_XCIX(monkeypatch, capsys):
+    monkeypatch.setattr('sys.argv', ['calculator', "XCIX"])
+
+    val = main()
+
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "99"
+    assert val == 99

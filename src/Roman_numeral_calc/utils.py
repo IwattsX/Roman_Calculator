@@ -19,12 +19,15 @@ def romanToDecimal(roman_number : str):
     # Should never happen
     if not isinstance(roman_number, str):
         raise ValueError("I don't know how to read this.")
+    
+    if roman_number == "":
+        raise ValueError("I don't know how to read this.")
 
-    regexp_valid = r'^[IVXLCDM]+$'
+    # regexp that covers 1000, 100, 10, 1 places in for 1-3999
+    regexp_valid = r'^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$$'
 
     if not re.search(regexp_valid, roman_number):
         raise ValueError("I don't know how to read this.")
-
 
     res = 0
     conversions = {
@@ -54,9 +57,10 @@ def romanToDecimal(roman_number : str):
         else:
             res += tmp1
         i += 1
-            
-    if res > 3999:
-        raise ValueError("You're going to need a bigger calculator.")
+    
+    # No longer need this since the regexp handles it
+    # if res > 3999:
+    #     raise ValueError("You're going to need a bigger calculator.")
     
     return res
 

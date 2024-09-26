@@ -44,7 +44,22 @@ def test_mixed_invalid_input():
 def test_bigger_calc():
     with pytest.raises(ValueError) as excinfo:
         romanToDecimal("MMMM")
-    assert str(excinfo.value) == "You're going to need a bigger calculator."
+    assert str(excinfo.value) == "I don't know how to read this."
+
+
+
+def test_bigger_calc():
+    with pytest.raises(ValueError) as excinfo:
+        romanToDecimal("MMMDDI")
+    assert str(excinfo.value) == "I don't know how to read this."
+
+
+def test_quad_invalid_numerals():
+    invalid_quads = ["IIII", "VVVV", "XXXX", "LLLL", "CCCC", "DDDD", "MMMM"]
+    for inval in invalid_quads:
+        with pytest.raises(ValueError) as excinfo:
+            romanToDecimal(inval)
+        assert str(excinfo.value) == "I don't know how to read this."
 
 
 
