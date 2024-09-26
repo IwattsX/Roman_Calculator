@@ -8,7 +8,7 @@ import argparse
 from .utils import romanToDecimal, decimalToRoman
 from .evaluate_expression import evaluate
 
-def main() -> (str | int):
+def main():
     """
     Driver code (main function) for the calculator.
     

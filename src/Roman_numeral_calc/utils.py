@@ -3,7 +3,7 @@
 import re
 
 
-def romanToDecimal(roman_number : str) -> int:
+def romanToDecimal(roman_number : str):
     """
     Parse a roman_number (I, V, X, L, C, D, M) into a number.
     
@@ -60,7 +60,7 @@ def romanToDecimal(roman_number : str) -> int:
     
     return res
 
-def decimalToRoman(num : int) -> str:
+def decimalToRoman(num : int):
     """
     Parse a natural number to a Roman Numeral.
 

@@ -4,7 +4,7 @@ import re
 from collections import deque
 
 
-def peek(stack : deque) -> (str | None) :
+def peek(stack : deque):
     """
     Peeks at the top element of a stack without popping it.
 
@@ -73,7 +73,7 @@ def apply_operator(operators : deque, values : deque):
 
     values.append(res)
 
-def greater_precedence(op1 : str, op2 : str) -> bool:
+def greater_precedence(op1 : str, op2 : str):
     """
     Determine the presedence between two operations (+, -, *, / ).
 
@@ -83,7 +83,7 @@ def greater_precedence(op1 : str, op2 : str) -> bool:
     precedences = {'+' : 0, '-' : 0, '*' : 1, '/' : 1}
     return precedences[op1] > precedences[op2]
 
-def evaluate(expression : str) -> int:
+def evaluate(expression : str):
     """
     Evaluate a mathematical expression using the Shunting Yard Algorithm.
 
