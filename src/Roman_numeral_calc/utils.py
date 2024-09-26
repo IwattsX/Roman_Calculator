@@ -22,23 +22,24 @@ def romanToDecimal(roman_number : str):
     
     if roman_number == "":
         raise ValueError("I don't know how to read this.")
-
-    # regexp that covers 1000, 100, 10, 1 places in for 1-3999
-    regexp_valid = r'^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$$'
+    
+    # See this for more details on how this regexp works
+    # https://www.geeksforgeeks.org/validating-roman-numerals-using-regular-expression/ 
+    regexp_valid = r'^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
 
     if not re.search(regexp_valid, roman_number):
         raise ValueError("I don't know how to read this.")
 
     res = 0
     conversions = {
-            'I' : 1,
-            'V' : 5,
-            'X' : 10,
-            'L' : 50,
-            'C' : 100,
-            'D' : 500,
-            'M' : 1000
-            }
+        'I' : 1,
+        'V' : 5,
+        'X' : 10,
+        'L' : 50,
+        'C' : 100,
+        'D' : 500,
+        'M' : 1000
+    }
     
     n = len(roman_number)
     i = 0
