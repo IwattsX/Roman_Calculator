@@ -32,9 +32,13 @@ def main():
         # •	Entry of a number into your application without any operations or other numbers 
         # should simply print the number as their English numeral representation, 
         # i.e. VI should print 6.
-        num_res = romanToDecimal(str(args.equation[0]))
-        print(num_res)
-        return num_res
+        try:
+            num_res = romanToDecimal(str(args.equation[0]))
+            print(num_res)
+            return num_res
+        except ValueError as e:
+            print(e)
+            return str(e)
 
 
     roman_equation = " ".join(args.equation) #Add spaces between the equation for edge cases
